@@ -119,4 +119,13 @@ INSERT INTO Title
  => select * from worker order by FIRST_NAME asc, DEPARTMENT desc;
  13> Write an SQL query to print details for Workers with the first names “Vipul” and “Satish” from the Worker table.
  => select * from worker where FIRST_NAME in ('Vipul','Satish');
- 14
+ 14> Write an SQL query to print details of workers excluding first names, “Vipul” and “Satish” from the Worker table.
+ =>	select * from worker where FIRST_NAME not in('Vipul','Satish');
+ 15> Write an SQL query to print details of Workers with DEPARTMENT name as “Admin”.
+ =>	select * from worker where DEPARTMENT like 'Admin%';
+ 16> Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
+ =>	select * from worker where FIRST_NAME like '%a%';
+ 17> Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘a’.
+ =>	select * from worker where FIRST_NAME like '%a';
+ 18> Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘h’ and contains six alphabets.
+ => select *from worker where FIRST_NAME like '_____h';
