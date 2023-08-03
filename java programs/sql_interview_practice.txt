@@ -129,3 +129,31 @@ INSERT INTO Title
  =>	select * from worker where FIRST_NAME like '%a';
  18> Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘h’ and contains six alphabets.
  => select *from worker where FIRST_NAME like '_____h';
+ 19> Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000.
+ =>	select * from worker where SALARY between 100000 and 500000;
+ 20> Write an SQL query to print details of the Workers who joined in Feb’2014.
+ =>	select *from worker where year(JOINING_DATE)=2014 and month(JOINING_DATE) =2;
+ 21> Write an SQL query to fetch the count of employees working in the department ‘Admin’.
+ =>	select count(*) from worker where DEPARTMENT ='Admin';
+ 22> select count(*) from worker where DEPARTMENT ='Admin';
+ =>	select concat(first_name,' ',last_name) as worker_name,salary
+	from worker 
+	where WORKER_ID in 
+	(select worker_id from worker
+	where salary between 50000 and 100000);
+ 23> Write an SQL query to fetch the no. of workers for each department in descending order.
+ =>	select department, count(*) as count
+	from worker
+	group by DEPARTMENT 
+	order by count desc;
+24> Write an SQL query to print details of the Workers who are also Managers.
+=>	select w.first_name, t.worker_title
+	from worker w
+	inner join title t
+	on w.WORKER_ID = t.WORKER_REF_ID
+	and t.WORKER_TITLE in ('Manager');
+25> Write an SQL query to fetch duplicate records having matching data in some fields of a table.
+=>	SELECT WORKER_TITLE, AFFECTED_FROM, COUNT(*)
+	FROM Title
+	GROUP BY WORKER_TITLE, AFFECTED_FROM
+	HAVING COUNT(*) > 1;
